@@ -3,20 +3,26 @@ import 'package:flutter/material.dart';
 
 class ShoesPreviewCard extends StatelessWidget {
   
-  const ShoesPreviewCard({Key? key}) : super(key: key);
+  final bool isFullScreen;
+
+  const ShoesPreviewCard({
+    Key? key, 
+    this.isFullScreen = false
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+      padding: EdgeInsets.symmetric(horizontal: isFullScreen ? 5 : 20, vertical: 5),
       child: Container(
         width: double.infinity,
         height: 450,
         decoration: getBoxDecoration(),
         child: Column(
-          children: const [
-            _ShoesAndShadow(),
-            _ShoesSizes()
+          children: [
+            const _ShoesAndShadow(),
+            if (!isFullScreen)
+              const _ShoesSizes()
           ],
         ),
       ),
@@ -25,9 +31,21 @@ class ShoesPreviewCard extends StatelessWidget {
 
   BoxDecoration getBoxDecoration() {
     return BoxDecoration(
-      borderRadius: BorderRadius.circular(50),
+      borderRadius: getBorderRadius(),
       color: const Color(0xffFFCF53)
     );
+  }
+
+  BorderRadius getBorderRadius() {
+    if (isFullScreen) {
+      return const BorderRadius.only(
+        topLeft: Radius.circular(30),
+        topRight: Radius.circular(30),
+        bottomLeft: Radius.circular(50), 
+        bottomRight: Radius.circular(50)
+      );
+    }
+    return BorderRadius.circular(50);
   }
 }
 

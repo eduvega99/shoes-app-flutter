@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:shoes_app/widgets/widgets.dart';
 
 
-class ShoesScreen extends StatelessWidget {
+class ShoesPreviewScreen extends StatelessWidget {
 
-  const ShoesScreen({Key? key}) : super(key: key);
+  const ShoesPreviewScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -25,7 +25,7 @@ class AddCartButton extends StatelessWidget {
             const SizedBox(width: 20),
             Text('$price €', style: const TextStyle(fontSize: 28, fontWeight: FontWeight.w800)),
             const Spacer(),
-            const OrangeButton(text: 'Add to cart'),
+            const CustomRoundedButton(text: 'Add to cart'),
             const SizedBox(width: 20)
           ],
         ),

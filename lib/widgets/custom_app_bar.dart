@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 
 class CustomAppBar extends StatelessWidget {
 
@@ -26,7 +24,7 @@ class CustomAppBar extends StatelessWidget {
             children: const [
               Text('For you', style: TextStyle(fontSize: 25, fontWeight: FontWeight.w800)),
               Spacer(),
-              FaIcon(FontAwesomeIcons.search)
+              Icon(Icons.search)
             ],
           ),
         ),
