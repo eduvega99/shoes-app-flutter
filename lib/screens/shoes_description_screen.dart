@@ -13,16 +13,21 @@ class ShoesDescriptionScreen extends StatelessWidget {
         children: [
           Stack(
             children: [
-              const ShoesPreviewCard(isFullScreen: true),
+              const Hero(
+                tag: 'shoesCard',
+                child: ShoesPreviewCard(isFullScreen: true)
+              ),
+
               Positioned(
-                top: 30,
+                top: 35,
                 left: 15,
                 child: IconButton(
                   color: Colors.white,
                   icon: const Icon(Icons.arrow_back),
-                  onPressed: ( ) { }, 
+                  onPressed: ( ) => Navigator.pop(context), 
                 ),
               )
+              
             ],
           ),
 
@@ -125,6 +130,7 @@ class _FloatingButtons extends StatelessWidget {
             backgroundColor: Colors.white,
             child: const Icon(Icons.favorite, color: Colors.red),
             elevation: 3,
+            heroTag: null,
             onPressed: () { },
           ),
 
@@ -132,12 +138,14 @@ class _FloatingButtons extends StatelessWidget {
             backgroundColor: Colors.white,
             child: Icon(Icons.shopping_cart, color: Colors.grey.shade400),
             elevation: 3,
+            heroTag: null,
             onPressed: () { },
           ),
 
           FloatingActionButton(
             backgroundColor: Colors.white,
             elevation: 3,
+            heroTag: null,
             child: Icon(Icons.settings, color: Colors.grey.shade400),
             onPressed: () { },
           )
