@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:shoes_app/widgets/widgets.dart';
 
@@ -66,10 +67,16 @@ class _BuyButton extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
       child: Row(
-        children: const [
-          Text('80.00 €', style: TextStyle(fontSize: 28, fontWeight: FontWeight.w800)),
-          Spacer(),
-          CustomRoundedButton(text: 'Buy now'),
+        children: [
+          const Text('80.00 €', style: TextStyle(fontSize: 28, fontWeight: FontWeight.w800)),
+          
+          const Spacer(),
+
+          Bounce( 
+            delay: const Duration(seconds: 1),
+            from: 8,
+            child: const CustomRoundedButton(text: 'Buy now')
+          ),
         ]
       ),
     );
@@ -106,11 +113,32 @@ class _ColorButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: const [
-        Positioned(child: ColorButton( Color(0xffC6D642) ), left: 90,),
-        Positioned(child: ColorButton( Color(0xffFFAD29) ), left: 60,),
-        Positioned(child: ColorButton( Color(0xff2099F1) ), left: 30,),
-        ColorButton( Color(0xff364D56) ),
+        Positioned( child: _ColorButtonAnimated(color: Color(0xffC6D642), delay: 4), left: 90),
+        Positioned( child: _ColorButtonAnimated(color: Color(0xffFFAD29), delay: 3), left: 60),
+        Positioned( child: _ColorButtonAnimated(color: Color(0xff2099F1), delay: 2), left: 30),
+        _ColorButtonAnimated(color: Color(0xff364D56), delay: 1)
       ],
+    );
+  }
+}
+
+class _ColorButtonAnimated extends StatelessWidget {
+  
+  final Color color;
+  final int delay;
+
+  const _ColorButtonAnimated({
+    Key? key, 
+    required this.color,
+    required this.delay 
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return FadeInLeft(
+      duration: const Duration(milliseconds: 300),
+      delay: Duration(milliseconds: delay * 200),
+      child: ColorButton( color )
     );
   }
 }
