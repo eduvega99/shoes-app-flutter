@@ -1,0 +1,1 @@
+export 'package:shoes_app/screens/shoes_preview_screen.dart';
