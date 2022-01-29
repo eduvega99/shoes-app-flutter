@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'package:provider/provider.dart';
+import 'package:shoes_app/provider/ui_provider.dart';
+
 
 class ShoesPreviewCard extends StatelessWidget {
   
@@ -55,18 +58,21 @@ class _ShoesAndShadow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final uiProvider = Provider.of<UIProvider>(context);
+
     return Padding(
       padding: const EdgeInsets.all(50),
       child: Stack(
-        children: const [
+        children: [
           
-          Positioned(
+          const Positioned(
             bottom: 20,
             right: 0,
             child: _ShoesShadow()
           ),
 
-          Image(image: AssetImage('assets/images/azul.png')),
+          Image(image: AssetImage(uiProvider.assetImage)),
 
         ],
       ),
@@ -131,17 +137,21 @@ class _SizeButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final uiProvider = Provider.of<UIProvider>(context);
 
-    final bool isSelected = (size == 42);
+    final bool isSelected = (size == uiProvider.size);
 
-    return Container(
-      alignment: Alignment.center,
-      width: 45,
-      height: 45,
-      decoration: getBoxDecoration(isSelected),
-      child: Text(
-        size.toString().replaceAll('.0', ''), 
-        style: getTextStyle(isSelected),
+    return GestureDetector(
+      onTap: () => uiProvider.size = size,
+      child: Container(
+        alignment: Alignment.center,
+        width: 45,
+        height: 45,
+        decoration: getBoxDecoration(isSelected),
+        child: Text(
+          size.toString().replaceAll('.0', ''), 
+          style: getTextStyle(isSelected),
+        ),
       ),
     );
   }

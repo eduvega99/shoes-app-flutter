@@ -1,0 +1,1 @@
+export 'package:shoes_app/provider/ui_provider.dart';

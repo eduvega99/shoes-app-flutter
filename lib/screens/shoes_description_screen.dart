@@ -113,10 +113,10 @@ class _ColorButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: const [
-        Positioned( child: _ColorButtonAnimated(color: Color(0xffC6D642), delay: 4), left: 90),
-        Positioned( child: _ColorButtonAnimated(color: Color(0xffFFAD29), delay: 3), left: 60),
-        Positioned( child: _ColorButtonAnimated(color: Color(0xff2099F1), delay: 2), left: 30),
-        _ColorButtonAnimated(color: Color(0xff364D56), delay: 1)
+        Positioned( child: _ColorButtonAnimated(color: Color(0xffC6D642), delay: 4, assetImage: 'verde.png',), left: 90),
+        Positioned( child: _ColorButtonAnimated(color: Color(0xffFFAD29), delay: 3, assetImage: 'amarillo.png',), left: 60),
+        Positioned( child: _ColorButtonAnimated(color: Color(0xff2099F1), delay: 2, assetImage: 'azul.png',), left: 30),
+        _ColorButtonAnimated(color: Color(0xff364D56), delay: 1, assetImage: 'negro.png')
       ],
     );
   }
@@ -126,11 +126,13 @@ class _ColorButtonAnimated extends StatelessWidget {
   
   final Color color;
   final int delay;
+  final String assetImage;
 
   const _ColorButtonAnimated({
     Key? key, 
     required this.color,
-    required this.delay 
+    required this.delay,
+    required this.assetImage
   }) : super(key: key);
 
   @override
@@ -138,7 +140,7 @@ class _ColorButtonAnimated extends StatelessWidget {
     return FadeInLeft(
       duration: const Duration(milliseconds: 300),
       delay: Duration(milliseconds: delay * 200),
-      child: ColorButton( color )
+      child: ColorButton(color: color, assetImage: assetImage )
     );
   }
 }
