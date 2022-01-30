@@ -1,5 +1,7 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+
+import 'package:animate_do/animate_do.dart';
+
 import 'package:shoes_app/widgets/widgets.dart';
 
 
@@ -9,6 +11,7 @@ class ShoesDescriptionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       body: Column(
         children: [
